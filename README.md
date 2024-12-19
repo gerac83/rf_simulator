@@ -1,4 +1,4 @@
-# Robotics Foundations Lab Materials -- 2025
+# Robotics Foundations Lab Materials - 2025
 
 ## TODO:
 
