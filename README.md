@@ -3,9 +3,9 @@
 ## TODO:
 
 - [X] Test RF Materials in WSL and write instructions
-- [ ] Add instructions for Ubuntu installation (USB pendrive or local installation)
 - [ ] Test pymoveit2 and run examples https://github.com/AndrejOrsula/pymoveit2/tree/master
 - [ ] Test this repo in the constructsim https://app.theconstruct.ai/rosjects/my_rosjects/
+- [ ] Add instructions for Ubuntu installation (USB pendrive or local installation)
 - [ ] Upgrade RF Lab 1
 - [ ] Deploy and test RF Lab 1 in constructsim
 - [ ] Upgrade RF Lab 2
