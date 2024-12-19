@@ -1,5 +1,24 @@
 # Robotics Foundations Lab Materials -- 2025
 
+## TODO:
+
+- [X] Test RF Materials in WSL and write instructions
+- [ ] Test pymoveit2 and run examples https://github.com/AndrejOrsula/pymoveit2/tree/master
+- [ ] Test this repo in the constructsim https://app.theconstruct.ai/rosjects/my_rosjects/
+- [ ] Upgrade RF Lab 1
+- [ ] Deploy and test RF Lab 1 in constructsim
+- [ ] Upgrade RF Lab 2
+- [ ] Deploy and test RF Lab 2 in constructsim
+- [ ] Upgrade RF Lab 3
+- [ ] Deploy and test RF Lab 3 in constructsim
+- [ ] Upgrade RF Lab 4
+- [ ] Deploy and test RF Lab 4 in constructsim
+- [ ] Upgrade RF Lab 5
+- [ ] Deploy and test RF Lab 5 in constructsim
+- [ ] Design and prepare Coursework
+- [ ] FUTURE: Try to compile moveit2 from source in humble to have python enabled
+- [ ] FUTURE: Port RF Materials to Gazebo Garden (or wait for Franka to do it)
+
 ## Windows Subsystem Linux (WSL)
 
 It is possible to run the simulation and code for RF labs in a WSL image. For this make sure to have installed WSL () and that you have admin rights in your PC. Then, you can either download Ubuntu 22.04 from the Microsft Store: https://apps.microsoft.com/detail/9pn20msr04dw?hl=en-US&gl=GB or run the following command in a command prompt:
