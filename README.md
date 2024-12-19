@@ -59,6 +59,7 @@ echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc
 The next step is to get and build the simulator and related ROS packages for RF. So, run (one line at a time):
 
 ```
+sudo apt update
 sudo apt install ros-humble-libfranka -y
 ```
 ```
