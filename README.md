@@ -4,7 +4,8 @@
 
 - [X] Test RF Materials in WSL and write instructions
 - [ ] Test pymoveit2 and run examples https://github.com/AndrejOrsula/pymoveit2/tree/master
-- [ ] Test this repo in the constructsim https://app.theconstruct.ai/rosjects/my_rosjects/
+- [X] Test this repo in the constructsim https://app.theconstruct.ai/rosjects/my_rosjects/
+- [ ] Reduce meshes for arm and gripper models to improve simulation
 - [ ] Add instructions for Ubuntu installation (USB pendrive or local installation)
 - [ ] Upgrade RF Lab 1
 - [ ] Deploy and test RF Lab 1 in constructsim
