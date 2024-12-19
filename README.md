@@ -8,6 +8,8 @@ It is possible to run the simulation and code for RF labs in a WSL image. For th
 wsl --install Ubuntu-22.04
 ```
 
+### Ubuntu 22.04
+
 The installer will ask you for a username, make sure you use 'rf' as username. It will then ask you for a password, this can be whatever you prefer. After this, you will have a working Ubuntu distro running in Windows. 
 
 When you get the command prompt back to you, issue the following commands:
@@ -16,11 +18,14 @@ When you get the command prompt back to you, issue the following commands:
 sudo apt update
 sudo apt upgrade -y
 ```
+
+(you can ignore this if you are not using ssh)
 ```
 ssh-keygen -t ed25519 -C "gerardo.aragoncamarasa@glasgow.ac.uk"
 cat ~/.ssh/id_ed25519.pub
 ```
 
+### ROS2 Install
 You now can install ROS2 (Humble) by following the instructions in this link: https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
 
 After installing ROS, run the following commands, each at a time:
@@ -30,6 +35,7 @@ echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc
 ````
 
+### Simulation and RF packages
 The next step is to get and build the simulator and related ROS packages for RF. So, run (one line at a time):
 
 ```
@@ -73,6 +79,8 @@ code .
 ```
 
 The last command assumes that you have VS Code installed in your Windows environment, if not make sure to download from: https://code.visualstudio.com/
+
+### Testing installation
 
 In VS Code, open two terminals and issue the following commands in both terminals:
 ```
