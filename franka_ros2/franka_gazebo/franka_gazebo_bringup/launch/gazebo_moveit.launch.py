@@ -105,7 +105,7 @@ def prepare_launch_description():
     gazebo_empty_world = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')),
-        launch_arguments={'gz_args': 'empty.sdf -r', }.items(),
+        launch_arguments={'gz_args': '/home/ger/franka_ros2_ws/src/rf_simulator/franka_description/launch/empty_rf.sdf -r', }.items(),
     )
 
     # Spawn
