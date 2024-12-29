@@ -2,11 +2,6 @@
 
 ## TODO:
 
-- [X] Test RF Materials in WSL and write instructions
-- [ ] Test pymoveit2 and run examples https://github.com/AndrejOrsula/pymoveit2/tree/master
-- [X] Test this repo in the constructsim https://app.theconstruct.ai/rosjects/my_rosjects/
-- [X] Reduce meshes for arm and gripper models to improve simulation
-- [X] Add instructions for Ubuntu installation (USB pendrive or local installation)
 - [ ] Upgrade RF Lab 1
 - [ ] Deploy and test RF Lab 1 in constructsim
 - [ ] Upgrade RF Lab 2
@@ -21,6 +16,11 @@
 - [ ] FUTURE: Try to compile moveit2 from source in humble to have python enabled
 - [ ] FUTURE: Port RF Materials to Gazebo Garden (or wait for Franka to do it)
 - [ ] FUTURE: Check https://moveit.picknik.ai/humble/doc/examples/realtime_servo/realtime_servo_tutorial.html
+- [X] Test RF Materials in WSL and write instructions
+- [X] Test pymoveit2 and run examples https://github.com/AndrejOrsula/pymoveit2/tree/master
+- [X] Test this repo in the constructsim https://app.theconstruct.ai/rosjects/my_rosjects/
+- [X] Reduce meshes for arm and gripper models to improve simulation
+- [X] Add instructions for Ubuntu installation (USB pendrive or local installation)
 
 ## Getting Ready 
 
