@@ -65,6 +65,7 @@ After installing ROS, run the following commands, each at a time:
 ```
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc
+echo "export export ROS_LOCALHOST_ONLY=1" >> ~/.bashrc
 ````
 
 ### Simulation and RF packages
@@ -93,7 +94,7 @@ git clone https://github.com/gerac83/rf_simulator.git
 cd ~/franka_ros2_ws
 ```
 ```
-colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release
+colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release --symlink-install
 ```
 ```
 source install/setup.sh
