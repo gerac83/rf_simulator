@@ -13,7 +13,7 @@ from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 
 from pymoveit2 import GripperInterface
-from pymoveit2.robots import panda as robot
+from pymoveit2.robots import franka as robot
 
 
 def main():

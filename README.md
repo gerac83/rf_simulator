@@ -20,6 +20,7 @@
 - [ ] Design and prepare Coursework
 - [ ] FUTURE: Try to compile moveit2 from source in humble to have python enabled
 - [ ] FUTURE: Port RF Materials to Gazebo Garden (or wait for Franka to do it)
+- [ ] FUTURE: Check https://moveit.picknik.ai/humble/doc/examples/realtime_servo/realtime_servo_tutorial.html
 
 ## Getting Ready 
 
