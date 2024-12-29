@@ -5,8 +5,8 @@
 - [X] Test RF Materials in WSL and write instructions
 - [ ] Test pymoveit2 and run examples https://github.com/AndrejOrsula/pymoveit2/tree/master
 - [X] Test this repo in the constructsim https://app.theconstruct.ai/rosjects/my_rosjects/
-- [ ] Reduce meshes for arm and gripper models to improve simulation
-- [ ] Add instructions for Ubuntu installation (USB pendrive or local installation)
+- [X] Reduce meshes for arm and gripper models to improve simulation
+- [X] Add instructions for Ubuntu installation (USB pendrive or local installation)
 - [ ] Upgrade RF Lab 1
 - [ ] Deploy and test RF Lab 1 in constructsim
 - [ ] Upgrade RF Lab 2
@@ -76,7 +76,10 @@ sudo apt update
 sudo apt install ros-humble-libfranka -y
 ```
 ```
-sudo apt install -y ros-humble-ament-cmake ros-humble-ament-cmake-clang-format ros-humble-angles ros-humble-ros2-controllers ros-humble-ros2-control ros-humble-ros2-control-test-assets ros-humble-controller-manager ros-humble-control-msgs ros-humble-control-toolbox ros-humble-generate-parameter-library ros-humble-joint-state-publisher ros-humble-joint-state-publisher-gui ros-humble-moveit ros-humble-pinocchio ros-humble-realtime-tools ros-humble-xacro ros-humble-hardware-interface ros-humble-ros-gz python3-colcon-common-extensions
+sudo apt install -y ros-humble-ament-cmake ros-humble-ament-cmake-clang-format ros-humble-angles ros-humble-ros2-controllers ros-humble-ros2-control ros-humble-ros2-control-test-assets ros-humble-controller-manager ros-humble-control-msgs ros-humble-control-toolbox ros-humble-generate-parameter-library ros-humble-joint-state-publisher ros-humble-joint-state-publisher-gui ros-humble-moveit ros-humble-pinocchio ros-humble-realtime-tools ros-humble-xacro ros-humble-hardware-interface ros-humble-ros-gz python3-colcon-common-extensions ros-$ROS_DISTRO-rmw-cyclonedds-cpp
+```
+```
+echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
 ```
 ```
 mkdir -p ~/franka_ros2_ws/src
@@ -94,7 +97,7 @@ git clone https://github.com/gerac83/rf_simulator.git
 cd ~/franka_ros2_ws
 ```
 ```
-colcon build --cmake-args -DCMAKE_BUILD_TYPE=Release --symlink-install
+colcon build --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
 ```
 ```
 source install/setup.sh
