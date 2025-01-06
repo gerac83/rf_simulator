@@ -101,14 +101,14 @@ source install/setup.sh
 Only run the following command if you are running WSL with a GPU. For other installation types, this is not needed, just make sure to have your drivers up-to-date.
 
 ```
-echo "export LIBGL_ALWAYS_SOFTWARE=1"
+echo "export LIBGL_ALWAYS_SOFTWARE=1" >> ~/.bashrc
 ```
-
-
-**NOTE: If you have a local Ubuntu installation, make sure to replace "user" below (in .../home/user/franka_ros2_ws/...) with your username!**
 
 ```
 echo "export GZ_SIM_RESOURCE_PATH=${GZ_SIM_RESOURCE_PATH}:/home/${USER}/franka_ros2_ws/src/rf_simulator/" >> ~/.bashrc
+```
+```
+source ~/.bashrc
 ```
 ```
 cd ~/franka_ros2_ws/src
