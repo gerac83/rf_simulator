@@ -98,20 +98,20 @@ colcon build --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
 source install/setup.sh
 ```
 
-**NOTE: If you have a local Ubuntu installation, make sure to replace "user" below (in .../home/user/franka_ros2_ws/...) with your username!**
-
-```
-echo "export GZ_SIM_RESOURCE_PATH=${GZ_SIM_RESOURCE_PATH}:/home/user/franka_ros2_ws/src/rf_simulator/" >> ~/.bashrc
-```
-```
-cd ~/franka_ros2_ws/src
-```
-
-
 Only run the following command if you are running WSL with a GPU. For other installation types, this is not needed, just make sure to have your drivers up-to-date.
 
 ```
 echo "export LIBGL_ALWAYS_SOFTWARE=1"
+```
+
+
+**NOTE: If you have a local Ubuntu installation, make sure to replace "user" below (in .../home/user/franka_ros2_ws/...) with your username!**
+
+```
+echo "export GZ_SIM_RESOURCE_PATH=${GZ_SIM_RESOURCE_PATH}:/home/${USER}/franka_ros2_ws/src/rf_simulator/" >> ~/.bashrc
+```
+```
+cd ~/franka_ros2_ws/src
 ```
 
 The following command assumes that you have VS Code installed in your Windows environment or in your Ubuntu base installation, if not make sure to download from: https://code.visualstudio.com/
