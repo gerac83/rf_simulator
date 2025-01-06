@@ -52,12 +52,6 @@ sudo apt update
 sudo apt upgrade -y
 ```
 
-(you can ignore this if you are not using ssh)
-```
-ssh-keygen -t ed25519 -C "gerardo.aragoncamarasa@glasgow.ac.uk"
-cat ~/.ssh/id_ed25519.pub
-```
-
 ### ROS2 Install
 You now can install ROS2 (Humble) by following the instructions in this link: https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
 
