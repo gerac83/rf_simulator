@@ -12,7 +12,7 @@ from rclpy.callback_groups import ReentrantCallbackGroup
 from rclpy.node import Node
 
 from pymoveit2 import MoveIt2, MoveIt2State
-from pymoveit2.robots import panda as robot
+from pymoveit2.robots import franka as robot
 
 
 def main():
@@ -24,15 +24,16 @@ def main():
     # Declare parameter for joint positions
     node.declare_parameter(
         "joint_positions",
-        [
-            0.0,
-            0.0,
-            0.0,
-            -0.7853981633974483,
-            0.0,
-            1.5707963267948966,
-            0.7853981633974483,
-        ],
+        [0.0001926748121444587, -0.7844009433457971, 0.0003417863749751357, -2.3552795021273325, 6.761957476170117e-05, 1.5710962053228061, 0.785942587429506],
+        # [
+        #     0.0,
+        #     0.0,
+        #     0.0,
+        #     -0.7853981633974483,
+        #     0.0,
+        #     1.5707963267948966,
+        #     0.7853981633974483,
+        # ],
     )
     node.declare_parameter("synchronous", True)
 
