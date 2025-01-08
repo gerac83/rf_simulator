@@ -129,5 +129,5 @@ source install/setup.sh
 ```
 
 Everything is now set up so you should be able to run the following commands, start one in each terminal:
-1. `ros2 launch franka_gazebo_bringup gazebo_moveit.launch.py`
+1. `ros2 launch franka_gazebo_bringup gazebo_empty.launch.py`
 2. `ros2 launch franka_gazebo_bringup moveit_sim.launch.py`

@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Run with ros2 launch franka_gazebo_bringup gazebo_moveit.launch.py
+
 import os
 import xacro
 
@@ -23,7 +25,7 @@ from launch.event_handlers import OnProcessExit
 
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, TextSubstitution
 from launch import LaunchContext, LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
@@ -44,16 +46,16 @@ def get_robot_description(context: LaunchContext, arm_id, load_gripper, franka_h
     )
 
     robot_description_config = xacro.process_file(
-        franka_xacro_file, 
+        franka_xacro_file,
         mappings={
-            'arm_id': arm_id_str, 
-            'hand': load_gripper_str, 
-            'ros2_control': 'true', 
+            'arm_id': arm_id_str,
+            'hand': load_gripper_str,
+            'ros2_control': 'true',
             'gazebo': 'true',
-            'ee_id': franka_hand_str,
-            'gazebo_effort': 'true'
+            'ee_id': franka_hand_str
         }
     )
+
     robot_description = {'robot_description': robot_description_config.toxml()}
 
     robot_state_publisher = Node(
@@ -62,6 +64,7 @@ def get_robot_description(context: LaunchContext, arm_id, load_gripper, franka_h
         name='robot_state_publisher',
         output='both',
         parameters=[
+            {"use_sim_time": True},
             robot_description,
         ]
     )
@@ -69,20 +72,21 @@ def get_robot_description(context: LaunchContext, arm_id, load_gripper, franka_h
     return [robot_state_publisher]
 
 
-
 def prepare_launch_description():
     # Configure ROS nodes for launch
     load_gripper_name = 'load_gripper'
     franka_hand_name = 'franka_hand'
     arm_id_name = 'arm_id'
+    world_type_name = 'world_type'
 
     load_gripper = LaunchConfiguration(load_gripper_name)
     franka_hand = LaunchConfiguration(franka_hand_name)
     arm_id = LaunchConfiguration(arm_id_name)
+    world_type = LaunchConfiguration(world_type_name)
 
     load_gripper_launch_argument = DeclareLaunchArgument(
             load_gripper_name,
-            default_value='false',
+            default_value='true',
             description='true/false for activating the gripper')
     franka_hand_launch_argument = DeclareLaunchArgument(
             franka_hand_name,
@@ -91,7 +95,11 @@ def prepare_launch_description():
     arm_id_launch_argument = DeclareLaunchArgument(
             arm_id_name,
             default_value='fr3',
-            description='Available values: fr3, fp3 and fer')
+            description='Available values: fr3')
+    world_type_argument = DeclareLaunchArgument(
+            world_type_name,
+            default_value=TextSubstitution(text='empty'),
+            description='Available values: empty, target')
 
     # Get robot description
     robot_state_publisher = OpaqueFunction(
@@ -100,10 +108,11 @@ def prepare_launch_description():
 
     # Gazebo Sim
     pkg_ros_gz_sim = get_package_share_directory('ros_gz_sim')
-    gazebo_empty_world = IncludeLaunchDescription(
+    pkg_ros_franka_desc = get_package_share_directory('franka_description')
+    gazebo_world = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(pkg_ros_gz_sim, 'launch', 'gz_sim.launch.py')),
-        launch_arguments={'gz_args': 'empty.sdf -r', }.items(),
+        launch_arguments={'gz_args': pkg_ros_franka_desc+'/launch/empty_rf.sdf -r', }.items(),
     )
 
     # Spawn
@@ -115,45 +124,45 @@ def prepare_launch_description():
     )
 
     # Visualize in RViz
-    rviz_file = os.path.join(get_package_share_directory('franka_description'), 'rviz',
-                             'visualize_franka.rviz')
-    rviz = Node(package='rviz2',
-             executable='rviz2',
-             name='rviz2',
-             arguments=['--display-config', rviz_file, '-f', 'world'],
-    )
-    
+    # rviz_file = os.path.join(get_package_share_directory('franka_description'), 'rviz',
+    #                          'visualize_franka.rviz')
+    # rviz = Node(package='rviz2',
+    #          executable='rviz2',
+    #          name='rviz2',
+    #          arguments=['--display-config', rviz_file, '-f', 'world'],
+    # )
+
     load_joint_state_broadcaster = ExecuteProcess(
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
                 'joint_state_broadcaster'],
         output='screen'
     )
-    
-    joint_impedance_example_controller = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active',
-                'joint_impedance_example_controller'],
-        output='screen'
+
+    # Make the /clock topic available in ROS
+    gz_sim_bridge = Node(
+        package="ros_gz_bridge",
+        executable="parameter_bridge",
+        arguments=[
+            "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
+        ],
+        output="screen",
     )
 
     return LaunchDescription([
         load_gripper_launch_argument,
         franka_hand_launch_argument,
         arm_id_launch_argument,
-        gazebo_empty_world,
+        # world_type_argument,
+        gazebo_world,
         robot_state_publisher,
-        rviz,
+        # rviz,
+        gz_sim_bridge,
         spawn,
         RegisterEventHandler(
                 event_handler=OnProcessExit(
                     target_action=spawn,
                     on_exit=[load_joint_state_broadcaster],
                 )
-        ),    
-        RegisterEventHandler(
-            event_handler=OnProcessExit(
-                target_action=load_joint_state_broadcaster,
-                on_exit=[joint_impedance_example_controller],
-            )
         ),
         Node(
             package='joint_state_publisher',
