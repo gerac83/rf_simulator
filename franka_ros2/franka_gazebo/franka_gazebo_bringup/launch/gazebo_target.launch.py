@@ -144,6 +144,7 @@ def prepare_launch_description():
         executable="parameter_bridge",
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
+            "/model/target/pose@geometry_msgs/msg/Pose[gz.msgs.Pose",
         ],
         output="screen",
     )
