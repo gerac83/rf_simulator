@@ -11,13 +11,15 @@ You can either install ubuntu locally or install it on a USB. For this, follow t
 
 ### Windows Subsystem Linux (WSL)
 
-It is possible to run the simulation and code for RF labs in a WSL image. For this make sure to have installed WSL () and that you have admin rights in your PC. Then, you can either download Ubuntu 22.04 from the Microsft Store: [https://apps.microsoft.com/detail/9pn20msr04dw?hl=en-US&gl=GB](https://apps.microsoft.com/detail/9pn20msr04dw?hl=en-US&gl=GB) or run the following command in a command prompt:
+It is possible to run the simulation and code for RF labs in a WSL image. For this make sure to have installed WSL [https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command](https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command) and that you have admin rights in your PC. Then, you can either download Ubuntu 22.04 from the Microsft Store: [https://apps.microsoft.com/detail/9pn20msr04dw?hl=en-US&gl=GB](https://apps.microsoft.com/detail/9pn20msr04dw?hl=en-US&gl=GB) or run the following command in a command prompt:
 
 ```bash
 wsl --install Ubuntu-22.04
 ```
 
 The installer will ask you for a username, make sure you use 'user' as username. It will then ask you for a password, this can be whatever you prefer. After this, you will have a working Ubuntu distro running in Windows.
+
+You may not have virtualization enable. If this is the case, just ask us during your lab hour!
 
 ## In a Ubuntu 22.04 installation (WSL or Local Installation)
 
@@ -30,7 +32,24 @@ sudo apt update
 sudo apt upgrade -y
 ```
 
-### ROS2 Install
+### VS Code Installation in a local Ubuntu installation
+
+To instal VSCode, go to [https://code.visualstudio.com/download](https://code.visualstudio.com/download) and download the `.deb` file for "Debian, Ubuntu". After you have finished downloading the file, open a terminal and type the following:
+
+```bash
+cd ~/Downloads
+sudo apt install ./<file>.deb
+```
+
+You can test whether the installation went OK by typing in the terminal `code`.
+
+## VS Code Installation using WSL
+
+For this, you need to download VS Code for windows which you can find at [https://code.visualstudio.com/download](https://code.visualstudio.com/download). When downloaded, double-click on the file and follow the instructions. Use the default settings.
+
+Now, in your WSL command prompt (or PowerShell) where you the Ubuntu prompt, type `code .` and you will get the Windows version of VS Code connecting to the WSL automatically!
+
+## ROS2 Installation
 
 You now can install ROS2 (Humble) by following the instructions in this link: [CLICK HERE](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html)
 
@@ -40,7 +59,7 @@ After installing ROS, run the following commands, each at a time:
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc
 echo "export export ROS_LOCALHOST_ONLY=1" >> ~/.bashrc
-````
+```
 
 ### Simulation and RF packages
 
@@ -87,7 +106,7 @@ colcon build --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
 source install/setup.sh
 ```
 
-Only run the following command if you are running WSL with a GPU. For other installation types, this is not needed, just make sure to have your drivers up-to-date.
+**CHECK THIS: Only run the following command if you are running WSL with a GPU. For other installation types, this is not needed, just make sure to have your drivers up-to-date.**
 
 ```bash
 echo "export LIBGL_ALWAYS_SOFTWARE=1" >> ~/.bashrc
