@@ -1,27 +1,5 @@
 # Robotics Foundations Lab Materials - 2025
 
-## TODO
-
-- [ ] Upgrade RF Lab 1
-- [ ] Deploy and test RF Lab 1 in constructsim
-- [ ] Upgrade RF Lab 2
-- [ ] Deploy and test RF Lab 2 in constructsim
-- [ ] Upgrade RF Lab 3
-- [ ] Deploy and test RF Lab 3 in constructsim
-- [ ] Upgrade RF Lab 4
-- [ ] Deploy and test RF Lab 4 in constructsim
-- [ ] Upgrade RF Lab 5
-- [ ] Deploy and test RF Lab 5 in constructsim
-- [ ] Design and prepare Coursework
-- [ ] FUTURE: Try to compile moveit2 from source in humble to have python enabled
-- [ ] FUTURE: Port RF Materials to Gazebo Garden (or wait for Franka to do it)
-- [ ] FUTURE: Check [MoveIt2 Realtime Servo Tutorial](https://moveit.picknik.ai/humble/doc/examples/realtime_servo/realtime_servo_tutorial.html)
-- [X] Test RF Materials in WSL and write instructions
-- [X] Test pymoveit2 and run examples [pymoveit2 examples](https://github.com/AndrejOrsula/pymoveit2/tree/master)
-- [X] Test this repo in the constructsim [constructsim](https://app.theconstruct.ai/rosjects/my_rosjects/)
-- [X] Reduce meshes for arm and gripper models to improve simulation
-- [X] Add instructions for Ubuntu installation (USB pendrive or local installation)
-
 ## Getting Ready
 
 ### Install Ubuntu 22.04
@@ -74,7 +52,7 @@ sudo apt install ros-humble-libfranka -y
 ```
 
 ```bash
-sudo apt install -y ros-humble-ament-cmake ros-humble-ament-cmake-clang-format ros-humble-angles ros-humble-ros2-controllers ros-humble-ros2-control ros-humble-ros2-control-test-assets ros-humble-controller-manager ros-humble-control-msgs ros-humble-control-toolbox ros-humble-generate-parameter-library ros-humble-joint-state-publisher ros-humble-joint-state-publisher-gui ros-humble-moveit ros-humble-pinocchio ros-humble-realtime-tools ros-humble-xacro ros-humble-hardware-interface ros-humble-ros-gz python3-colcon-common-extensions ros-$ROS_DISTRO-rmw-cyclonedds-cpp
+sudo apt install -y ros-humble-ament-cmake ros-humble-ament-cmake-clang-format ros-humble-angles ros-humble-ros2-controllers ros-humble-ros2-control ros-humble-ros2-control-test-assets ros-humble-controller-manager ros-humble-control-msgs ros-humble-control-toolbox ros-humble-generate-parameter-library ros-humble-joint-state-publisher ros-humble-joint-state-publisher-gui ros-humble-moveit ros-humble-pinocchio ros-humble-realtime-tools ros-humble-xacro ros-humble-hardware-interface ros-humble-ros-gz python3-colcon-common-extensions ros-$ROS_DISTRO-rmw-cyclonedds-cpp python3--ipykernel python3-jupyter-client
 ```
 
 ```bash
