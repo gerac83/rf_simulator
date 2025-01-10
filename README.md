@@ -1,8 +1,6 @@
 # Robotics Foundations Lab Materials - 2025
 
-Welcome to Robotics Foundations (H)!
-
-This README provides setup instructions for running the labs, either on a personal computer or using The ConstructSim platform.
+Welcome to Robotics Foundations (H)! This README provides setup instructions for running the labs, either on a personal computer or using The ConstructSim platform.
 
 ## Environment Setup
 
@@ -31,6 +29,8 @@ Just head over [https://app.theconstruct.ai/login] and create an account. Then l
 **WARNING:** The ConstructSim free tier gives you 8 hours of usage everyday and resets at mighnight. Be careful to **NOT** leave your session open as the clock will keep running and you will run out of time.
 
 **NOTE:** We strongly encourage you to try to setup a local environment as the ConstructSim is slow at times, similar to Google Colab. Moreover, the instructions below show you how to create your own ROS environment, while you will have a ready-to-use environment in the ConstructSim.
+
+After you have found the *RFLabEnvSetup*, open it and familiarise yourself with the platform. You will see that there's a welcome jupyter notebook openned and the taskbar at the bottom has different utilities which you will use such as an integrated instace of VS Code-like IDE, terminals, etc. After this, go to the [Running the Simulation and Motion Planning](#running-the-simulation-and-motion-planning) section.
 
 ## Installing Ubuntu 22.04 locally or on a USB
 
@@ -159,7 +159,7 @@ The following command assumes that you have VS Code installed in your Windows en
 code .
 ```
 
-### Running the Simulation and Motion Planning
+## Running the Simulation and Motion Planning
 
 Open two terminals (same for VS Code) and issue the following commands in both terminals:
 
@@ -172,3 +172,5 @@ Everything is now set up so you should be able to run the following commands, st
 
 1. `ros2 launch franka_gazebo_bringup gazebo_empty.launch.py`
 2. `ros2 launch franka_gazebo_bringup moveit_sim.launch.py`
+
+and you should be able to see the simulation (aka Gazebo) and a robot visualisation (RViz). Explore both and see if you can make the robot move! Although, that will be the aim of the first lab.
