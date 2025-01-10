@@ -1,27 +1,54 @@
 # Robotics Foundations Lab Materials - 2025
 
-## Getting Ready
+## Environment Setup
 
-### Install Ubuntu 22.04
+For running Robotics Foundations Labs, you have two options:
+
+1. Run it on your laptop (this guide), or
+2. Use The Construct Sim (free tier).
+
+### Option 1
+
+The minimum requirements to run the labs in your PC are:
+
+- At least 4 cores, not logical processors (e.g. an Intel Core 6700 has 4 cores with 8 logical processors)
+- 8Gb in RAM
+
+Unfortunately, we will not support macOS as virtualisation is close to impossible. The solution is to either use [Boot Camp assistant](https://support.apple.com/en-gb/guide/bootcamp-assistant/bcmp173b3bf2/6.1/mac/15.0), install Ubuntu locally or in a USB (see below), or choose option 2. We will release each lab materials and handout via the course Moodle page.
+
+### Option 2
+
+Just head over [https://app.theconstruct.ai/login] and create an account. Then log in and in the dashboard, type in the search bar *RFLabEnvSetup* to access the `rosject` (`rosject` is what the ConstructSim uses to define projects using ROS). According to the RF schedule, we will release the lab handouts each week in the ConstructSim, you will be able to find them using the search bar by typing:
+
+- *RFLab1* for the first lab in week 2.
+- *RFLab2* for the second lab in week 3.
+- etc. until lab 4.
+
+**WARNING:** The ConstructSim free tier gives you 8 hours of usage everyday and resets at mighnight. Be careful to **NOT** leave your session open as the clock will keep running and you will run out of time.
+
+**NOTE:** We strongly encourage you to try to setup a local environment as the ConstructSim is slow at times, similar to Google Colab. Moreover, the instructions below show you how to create your own ROS environment, while you will have a ready-to-use environment in the ConstructSim.
+
+## Installing Ubuntu 22.04 locally or on a USB
 
 You can either install ubuntu locally or install it on a USB. For this, follow the instructions given on the following links:
 
 - In a PC: [https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview](https://ubuntu.com/tutorials/install-ubuntu-desktop#1-overview)
 - In a USB: [https://www.youtube.com/watch?v=j2RYqahtkNc](https://www.youtube.com/watch?v=j2RYqahtkNc)
+- For macOS users: [https://linuxsimply.com/linux-basics/os-installation/dual-boot/ubuntu-on-mac/#:~:text=11%20Steps%20for%20Dual%20Boot%20Installation%20of%20Ubuntu,...%208%208.%20Installation%20Type%20...%20More%20items]
 
-### Windows Subsystem Linux (WSL)
+## Windows Subsystem Linux (WSL)
 
-It is possible to run the simulation and code for RF labs in a WSL image. For this make sure to have installed WSL [https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command](https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command) and that you have admin rights in your PC. Then, you can either download Ubuntu 22.04 from the Microsft Store: [https://apps.microsoft.com/detail/9pn20msr04dw?hl=en-US&gl=GB](https://apps.microsoft.com/detail/9pn20msr04dw?hl=en-US&gl=GB) or run the following command in a command prompt:
+It is possible to run the simulation and code for RF labs in a WSL image on Windows. For this make sure to have installed WSL [https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command](https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command) and that you have admin rights in your PC. Then, you can either download Ubuntu 22.04 from the Microsft Store: [https://apps.microsoft.com/detail/9pn20msr04dw?hl=en-US&gl=GB](https://apps.microsoft.com/detail/9pn20msr04dw?hl=en-US&gl=GB) or run the following command in a command prompt:
 
 ```bash
 wsl --install Ubuntu-22.04
 ```
 
-The installer will ask you for a username, make sure you use 'user' as username. It will then ask you for a password, this can be whatever you prefer. After this, you will have a working Ubuntu distro running in Windows.
+The installer will ask you for a username and password, feel free to choose whatever you prefer. After this, you will have a working Ubuntu distro running in Windows.
 
-You may not have virtualization enable. If this is the case, just ask us during your lab hour!
+If you get an error while running WSL, it may mean that you do not have virtualization enable. If this is the case, just ask us during your lab hour so we can help you!
 
-## In a Ubuntu 22.04 installation (WSL or Local Installation)
+## In a Ubuntu 22.04 installation (WSL, Local or USB Installation)
 
 Open a linux terminal and issue the following commands:
 
