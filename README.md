@@ -2,6 +2,8 @@
 
 Welcome to Robotics Foundations (H)!
 
+This README provides setup instructions for running the labs, either on a personal computer or using The ConstructSim platform.
+
 ## Environment Setup
 
 For running Robotics Foundations Labs, you have two options:
