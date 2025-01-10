@@ -105,27 +105,15 @@ sudo apt install -y ros-humble-ament-cmake ros-humble-ament-cmake-clang-format r
 ```
 
 ```bash
-echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ~/.bashrc
-```
-
-```bash
 mkdir -p ~/franka_ros2_ws/src
 ```
 
 ```bash
-source ~/.bashrc
+cd ~/franka_ros2_ws/
 ```
 
 ```bash
-cd ~/franka_ros2_ws/src
-```
-
-```bash
-git clone https://github.com/gerac83/rf_simulator.git
-```
-
-```bash
-cd ~/franka_ros2_ws
+git clone https://github.com/gerac83/rf_simulator.git src/
 ```
 
 ```bash
@@ -134,10 +122,6 @@ colcon build --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
 
 ```bash
 source install/setup.sh
-```
-
-```bash
-echo "export LIBGL_ALWAYS_SOFTWARE=1" >> ~/.bashrc
 ```
 
 ```bash
