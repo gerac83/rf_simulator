@@ -1,7 +1,6 @@
 .idea
 .vscode
 *.pyc
-AMENT_IGNORE
 cmake-build-*/
 build/
 install/
