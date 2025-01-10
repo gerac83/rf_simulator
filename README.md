@@ -1,11 +1,13 @@
 # Robotics Foundations Lab Materials - 2025
 
+Welcome to Robotics Foundations (H)!
+
 ## Environment Setup
 
 For running Robotics Foundations Labs, you have two options:
 
 1. Run it on your laptop (this guide), or
-2. Use The Construct Sim (free tier).
+2. Use The Construct Sim (free tier) anywhere on the University's lab machines or in your laptop.
 
 ### Option 1
 
