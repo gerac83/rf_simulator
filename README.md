@@ -122,7 +122,7 @@ source ~/.bashrc
 cd ~/franka_ros2_ws/src
 ```
 
-The following command assumes that you have VS Code installed in your Windows environment or in your Ubuntu base installation, if not make sure to download from: [https://code.visualstudio.com/](https://code.visualstudio.com/)
+The following command assumes that you have VS Code installed in your Windows environment or in your Ubuntu base installation, if not make sure to follow the instructions given above.
 
 ```bash
 code .
