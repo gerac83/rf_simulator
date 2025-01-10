@@ -30,7 +30,7 @@ Just head over [https://app.theconstruct.ai/login] and create an account. Then l
 
 **NOTE:** We strongly encourage you to try to setup a local environment as the ConstructSim is slow at times, similar to Google Colab. Moreover, the instructions below show you how to create your own ROS environment, while you will have a ready-to-use environment in the ConstructSim.
 
-After you have found the *RFLabEnvSetup*, open it, click "Run" (green button in the top-right corner) and familiarise yourself with the platform. You will see that there's a welcome jupyter notebook openned and the taskbar at the bottom has different utilities which you will use such as an integrated instace of VS Code-like IDE, terminals, etc. After this, go to the [Running the Simulation and Motion Planning](#running-the-simulation-and-motion-planning) section.
+After you have found the *RFLabEnvSetup*, you have to fork it, then click "Run" (green button in the top-right corner) and, finally, familiarise yourself with the platform. You will see that there's a welcome jupyter notebook openned and the taskbar at the bottom has different utilities which you will use such as an integrated instace of VS Code-like IDE, terminals, etc. After this, go to the [Running the Simulation and Motion Planning](#running-the-simulation-and-motion-planning) section.
 
 ## Installing Ubuntu 22.04 locally or on a USB
 
