@@ -87,8 +87,6 @@ colcon build --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
 source install/setup.sh
 ```
 
-Only run the following command if you are running WSL with a GPU. For other installation types, this is not needed, just make sure to have your drivers up-to-date.
-
 ```bash
 echo "export LIBGL_ALWAYS_SOFTWARE=1" >> ~/.bashrc
 ```
