@@ -156,7 +156,7 @@ def generate_launch_description():
             trajectory_execution,
             moveit_controllers,
             planning_scene_monitor_parameters,
-            {'use_sim_time': False},
+            {'use_sim_time': True},
         ],
     )
 
@@ -196,7 +196,7 @@ def generate_launch_description():
         PythonLaunchDescriptionSource([PathJoinSubstitution(
             [FindPackageShare('franka_gripper'), 'launch', 'gripper.launch.py'])]),
         launch_arguments={'robot_ip': 'robot_ip',
-                          'use_fake_hardware': 'false'}.items(),
+                          'use_fake_hardware': 'true'}.items(),
     )
     return LaunchDescription(
         [db_arg,
