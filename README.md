@@ -30,7 +30,9 @@ Just head over [https://app.theconstruct.ai/login] and create an account. Then l
 
 **NOTE:** We strongly encourage you to try to setup a local environment as the ConstructSim is slow at times, similar to Google Colab. Moreover, the instructions below show you how to create your own ROS environment, while you will have a ready-to-use environment in the ConstructSim.
 
-After you have found the *RFLabEnvSetup*, you have to fork it, then click "Run" (green button in the top-right corner) and, finally, familiarise yourself with the platform. You will see that there's a welcome jupyter notebook openned and the taskbar at the bottom has different utilities which you will use such as an integrated instace of VS Code-like IDE, terminals, etc. After this, go to the [Running the Simulation and Motion Planning](#running-the-simulation-and-motion-planning) section.
+After you have found the *RFLabEnvSetup*, you have to fork it, then click "Run" (green button in the top-right corner) and, finally, familiarise yourself with the platform. You will see that there's a welcome jupyter notebook openned and the taskbar at the bottom has different utilities which you will use such as an integrated instace of VS Code-like IDE, terminals, etc.
+
+After this, follow the instructions given in the welcome jupyter notebook. These instructions are similar to the [Running the Simulation and Motion Planning](#running-the-simulation-and-motion-planning) section but includes.
 
 ## Installing Ubuntu 22.04 locally or on a USB
 
@@ -82,7 +84,28 @@ Now, in your WSL command prompt (or PowerShell) where you the Ubuntu prompt, typ
 
 ## ROS2 Installation
 
-You now can install ROS2 (Humble) by following the instructions in this link: [CLICK HERE](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html)
+You now can install ROS2 (Humble). The commands below are similar to those found in [here](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html). Run the following commands in the terminal, each at a time:
+
+(Add Ubuntu Universe repo and download ROS2 GPG key)
+```bash
+sudo apt install software-properties-common && sudo add-apt-repository universe
+sudo apt update && sudo apt install curl -y && sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+```
+
+(Add the repository to your sources list)
+
+```bash
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://p
+```
+
+(Install ROS2 packages; we will use the recommended desktop install)
+
+```bash
+sudo apt update && sudo apt upgrade
+sudo apt install ros-humble-desktop ros-dev-tools
+```
+
+That's it! :)
 
 After installing ROS, run the following commands, each at a time:
 
@@ -92,17 +115,17 @@ echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc
 echo "export ROS_LOCALHOST_ONLY=1" >> ~/.bashrc
 ```
 
+The first adds to `.bashrc` ROS2 installation to the system's PATH such that you can use ROS2 functionalities from the command line. `.bashrc` is sourced (i.e. executed) everytime you open a terminal. The following two tells the terminal interpreter (i.e. bash) to colorised ROS 2 logger and restrict network communications within the localhost (i.e. your PC; otehrwise you will observe unpredictable behaviour while running ROS in the university).
+
 ### Simulation and RF packages
 
 The next step is to get and build the simulator and related ROS packages for RF. So, run (one line at a time):
 
 ```bash
-sudo apt update
+sudo apt update && sudo apt install -y ros-humble-ament-cmake ros-humble-ament-cmake-clang-format ros-humble-angles ros-humble-ros2-controllers ros-humble-ros2-control ros-humble-ros2-control-test-assets ros-humble-controller-manager ros-humble-control-msgs ros-humble-control-toolbox ros-humble-generate-parameter-library ros-humble-joint-state-publisher ros-humble-joint-state-publisher-gui ros-humble-moveit ros-humble-pinocchio ros-humble-realtime-tools ros-humble-xacro ros-humble-hardware-interface ros-humble-ros-gz python3-colcon-common-extensions ros-humble-rmw-cyclonedds-cpp python3-ipykernel python3-jupyter-client ros-humble-libfranka
 ```
 
-```bash
-sudo apt install -y ros-humble-ament-cmake ros-humble-ament-cmake-clang-format ros-humble-angles ros-humble-ros2-controllers ros-humble-ros2-control ros-humble-ros2-control-test-assets ros-humble-controller-manager ros-humble-control-msgs ros-humble-control-toolbox ros-humble-generate-parameter-library ros-humble-joint-state-publisher ros-humble-joint-state-publisher-gui ros-humble-moveit ros-humble-pinocchio ros-humble-realtime-tools ros-humble-xacro ros-humble-hardware-interface ros-humble-ros-gz python3-colcon-common-extensions ros-humble-rmw-cyclonedds-cpp python3-ipykernel python3-jupyter-client ros-humble-libfranka
-```
+Cretae a ROS2 workspace for the simulation and motion planning ROS packages:
 
 ```bash
 mkdir -p ~/franka_ros2_ws/src
@@ -112,25 +135,33 @@ mkdir -p ~/franka_ros2_ws/src
 cd ~/franka_ros2_ws/
 ```
 
+Now you can clone `rf_simulator` into this workspace:
+
 ```bash
 git clone https://github.com/gerac83/rf_simulator.git src/rf_simulator
 ```
+
+The following command will build and compile RF's simulation workspace:
+
 
 ```bash
 colcon build --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
 ```
 
-```bash
-source install/setup.sh
-```
+This command tells the interprater where the newly built ROS packages are such that you can execute them and adds an environmental variable that points to where the 3D models used for the simulation are.
 
 ```bash
+echo "source /home/${USER}/franka_ros2_ws/install/setup.sh" >> ~/.bashrc
 echo "export GZ_SIM_RESOURCE_PATH=${GZ_SIM_RESOURCE_PATH}:/home/${USER}/franka_ros2_ws/src/rf_simulator/" >> ~/.bashrc
 ```
+
+The following command sources your bashrc such that the above is reflected in your current terminal session. This command is run everytime you open a terminal.
 
 ```bash
 source ~/.bashrc
 ```
+
+Then, you can no open the code base for the RF simualtion. First, change directory (i.e `cd`) in the terminal to where the code is located:
 
 ```bash
 cd ~/franka_ros2_ws/src
@@ -144,11 +175,10 @@ code .
 
 ## Running the Simulation and Motion Planning
 
-Open two terminals (same for VS Code) and issue the following commands in both terminals:
+Open two terminals (same for VS Code) and issue the following command in both terminals (NOTE: `~` is a shortcut to your home directory path):
 
 ```bash
 cd ~/franka_ros2_ws
-source install/setup.sh
 ```
 
 Everything is now set up so you should be able to run the following commands, start one in each terminal:
