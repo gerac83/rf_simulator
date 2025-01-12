@@ -113,7 +113,7 @@ cd ~/franka_ros2_ws/
 ```
 
 ```bash
-git clone https://github.com/gerac83/rf_simulator.git src/
+git clone https://github.com/gerac83/rf_simulator.git src/rf_simulator
 ```
 
 ```bash
