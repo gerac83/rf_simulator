@@ -28,7 +28,7 @@ Unfortunately, we will not support macOS as virtualisation is close to impossibl
 
 After you have found the *RFLabEnvSetup*, you have to fork it, then click "Run" (green button in the top-right corner) and, finally, familiarise yourself with the platform. You will see that there's a welcome jupyter notebook openned and the taskbar at the bottom has different utilities which you will use such as an integrated instace of VS Code-like IDE, terminals, etc.
 
-After this, follow the instructions given in the welcome jupyter notebook. These instructions are similar to the [Running the Simulation and Motion Planning](#running-the-simulation-and-motion-planning) section but includes.
+After this, follow the instructions given in the welcome jupyter notebook. These instructions are similar to the [Running the Simulation and Motion Planning](#running-the-simulation-and-motion-planning) section but includes. You are also free to try to setup your environment by following the instructions in the [RF Environment Setup](rf-environment-setup) section.
 
 ## Installing Ubuntu 22.04 locally or on a USB
 
@@ -103,9 +103,9 @@ sudo apt install ros-humble-desktop ros-dev-tools
 
 That's it! :)
 
-## RF Snvironment Setup
+## RF Environment Setup
 
-**Note:** These steps are already executed in the ConstructSim. If you wish, you can create a new ROSject and follow these steps. If you are unsure, just ask us!
+**Note:** These steps are already executed in the ConstructSim. If you wish, you can create a new ROSject and follow these steps. If you are unsure or you get errors, just ask us!
 
 After installing ROS, you can now setup your environment for RF. For this, run the following commands, each at a time:
 
