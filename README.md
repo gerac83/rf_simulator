@@ -149,6 +149,7 @@ colcon build --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
 This command tells the interprater where the newly built ROS packages are such that you can execute them and adds an environmental variable that points to where the 3D models used for the simulation are.
 
 ```bash
+export USER="$(whoami)"
 echo "source /home/${USER}/franka_ros2_ws/install/setup.sh" >> ~/.bashrc
 echo "export GZ_SIM_RESOURCE_PATH=${GZ_SIM_RESOURCE_PATH}:/home/${USER}/franka_ros2_ws/src/rf_simulator/" >> ~/.bashrc
 ```
