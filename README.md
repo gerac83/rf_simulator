@@ -9,18 +9,14 @@ For running Robotics Foundations Labs, you have two options:
 1. Run it on your laptop (this guide), or
 2. Use The Construct Sim (free tier) anywhere on the University's lab machines or in your laptop.
 
-### Option 1
-
-The minimum requirements to run the labs in your PC are:
+**Option 1:** The minimum requirements to run the labs in your PC are:
 
 - At least 4 cores, not logical processors (e.g. an Intel Core 6700 has 4 cores with 8 logical processors)
 - 8Gb in RAM
 
 Unfortunately, we will not support macOS as virtualisation is close to impossible. The solution is to either use [Boot Camp assistant](https://support.apple.com/en-gb/guide/bootcamp-assistant/bcmp173b3bf2/6.1/mac/15.0), install Ubuntu locally or in a USB (see below), or choose option 2. We will release each lab materials and handout via the course Moodle page.
 
-### Option 2
-
-Just head over [https://app.theconstruct.ai/login] and create an account. Then log in and in the dashboard, type in the search bar *RFLabEnvSetup* to access the `rosject` (`rosject` is what the ConstructSim uses to define projects using ROS). According to the RF schedule, we will release the lab handouts each week in the ConstructSim, you will be able to find them using the search bar by typing:
+**Option 2:** Just head over [https://app.theconstruct.ai/login] and create an account. Then log in and in the dashboard, type in the search bar *RFLabEnvSetup* to access the `rosject` (`rosject` is what the ConstructSim uses to define projects using ROS). According to the RF schedule, we will release the lab handouts each week in the ConstructSim, you will be able to find them using the search bar by typing:
 
 - *RFLab1* for the first lab in week 2.
 - *RFLab2* for the second lab in week 3.
@@ -76,7 +72,7 @@ sudo apt install ./<file>.deb
 
 You can test whether the installation went OK by typing in the terminal `code`.
 
-## VS Code Installation using WSL
+### VS Code Installation using WSL
 
 For this, you need to download VS Code for windows which you can find at [https://code.visualstudio.com/download](https://code.visualstudio.com/download). When downloaded, double-click on the file and follow the instructions. Use the default settings.
 
@@ -107,7 +103,11 @@ sudo apt install ros-humble-desktop ros-dev-tools
 
 That's it! :)
 
-After installing ROS, run the following commands, each at a time:
+## RF Snvironment Setup
+
+**Note:** These steps are already executed in the ConstructSim. If you wish, you can create a new ROSject and follow these steps. If you are unsure, just ask us!
+
+After installing ROS, you can now setup your environment for RF. For this, run the following commands, each at a time:
 
 ```bash
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
@@ -116,8 +116,6 @@ echo "export ROS_LOCALHOST_ONLY=1" >> ~/.bashrc
 ```
 
 The first adds to `.bashrc` ROS2 installation to the system's PATH such that you can use ROS2 functionalities from the command line. `.bashrc` is sourced (i.e. executed) everytime you open a terminal. The following two tells the terminal interpreter (i.e. bash) to colorised ROS 2 logger and restrict network communications within the localhost (i.e. your PC; otehrwise you will observe unpredictable behaviour while running ROS in the university).
-
-### Simulation and RF packages
 
 The next step is to get and build the simulator and related ROS packages for RF. So, run (one line at a time):
 
