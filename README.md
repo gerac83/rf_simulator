@@ -160,13 +160,13 @@ The following command sources your bashrc such that the above is reflected in yo
 source ~/.bashrc
 ```
 
-Then, you can no open the code base for the RF simualtion. First, change directory (i.e `cd`) in the terminal to where the code is located:
+Then, you can now open the code base for the RF simualtion. First, change directory (i.e `cd`) in the terminal to where the code is located:
 
 ```bash
 cd ~/franka_ros2_ws/src
 ```
 
-The following command assumes that you have VS Code installed in your Windows environment or in your Ubuntu base installation, if not make sure to follow the instructions given above.
+(If you are using the ConstructSim, do not run this command; instead use the code editor provided in the bottom right panel.) The following command assumes that you have VS Code installed in your Windows environment or in your Ubuntu base installation, if not make sure to follow the instructions given above.
 
 ```bash
 code .
