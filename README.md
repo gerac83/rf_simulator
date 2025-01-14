@@ -152,6 +152,7 @@ This command tells the interprater where the newly built ROS packages are such t
 
 ```bash
 export USER="$(whoami)"
+echo "export LIBGL_ALWAYS_SOFTWARE=1" >> ~/.bashrc
 echo "source /home/${USER}/franka_ros2_ws/install/setup.sh" >> ~/.bashrc
 echo "export GZ_SIM_RESOURCE_PATH=${GZ_SIM_RESOURCE_PATH}:/home/${USER}/franka_ros2_ws/src/rf_simulator/" >> ~/.bashrc
 ```
