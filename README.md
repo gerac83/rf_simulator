@@ -135,10 +135,11 @@ mkdir -p ~/franka_ros2_ws/src
 cd ~/franka_ros2_ws/
 ```
 
-Now you can clone `rf_simulator` into this workspace:
+Now you can clone `rf_simulator` into this workspace and then source the ROS installation:
 
 ```bash
 git clone https://github.com/gerac83/rf_simulator.git src/rf_simulator
+source /opt/ros/humble/setup.bash
 ```
 
 The following command will build and compile RF's simulation workspace:
