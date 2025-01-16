@@ -26,7 +26,7 @@ Unfortunately, we will not support macOS as virtualisation is close to impossibl
 
 **NOTE:** We strongly encourage you to try to setup a local environment as the ConstructSim is slow at times, similar to Google Colab. Moreover, the instructions below show you how to create your own ROS environment, while you will have a ready-to-use environment in the ConstructSim.
 
-After you have found the *RFLabEnvSetup*, you have to fork it, then click "Run" (green button in the top-right corner) and, finally, familiarise yourself with the platform. You will see that there's a welcome jupyter notebook openned and the taskbar at the bottom has different utilities which you will use such as an integrated instace of VS Code-like IDE, terminals, etc.
+After you have found the *RFLabEnvSetup*, make sure that you are forking the `rosject` created by `gerac83` user (this should be the second to last from the search results). Then, rename the `rosject` with your studentid and click save. Finally, click "Run" (green button in the top-right corner) and familiarise yourself with the platform. You will see that there's a welcome jupyter notebook openned and the taskbar at the bottom has different utilities which you will use such as an integrated instace of VS Code-like IDE, terminals, etc.
 
 After this, follow the instructions given in the welcome jupyter notebook. These instructions are similar to the [Running the Simulation and Motion Planning](#running-the-simulation-and-motion-planning) section but includes. You are also free to try to setup your environment by following the instructions in the [RF Environment Setup](rf-environment-setup) section.
 
@@ -190,3 +190,5 @@ Everything is now set up so you should be able to run the following commands, st
 2. `ros2 launch franka_gazebo_bringup moveit_sim.launch.py`
 
 and you should be able to see the simulation (aka Gazebo) and a robot visualisation (RViz). Explore both and see if you can make the robot move! Although, that will be the aim of the first lab.
+
+To close the simulation and the robot visualisation, just press `Ctrl-C` on both terminals where you run the commands above.
