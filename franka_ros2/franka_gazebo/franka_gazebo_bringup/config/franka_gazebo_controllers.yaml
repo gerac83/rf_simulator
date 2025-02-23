@@ -81,9 +81,12 @@ joint_impedance_example_controller:
 
 fr3_gripper:
   ros__parameters:
+    gazebo: true
+    type: joint_trajectory_controller/JointTrajectoryController
     command_interfaces:
       - position
     state_interfaces:
       - position
     joints:
       - fr3_finger_joint1
+      - fr3_finger_joint2
