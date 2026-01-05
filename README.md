@@ -153,7 +153,7 @@ The following command will build and compile RF's simulation workspace:
 
 
 ```bash
-find . -type f -exec touch {} + &&colcon build --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
+find . -type f -exec touch {} + && colcon build --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
 ```
 
 This command tells the interprater where the newly built ROS packages are such that you can execute them and adds an environmental variable that points to where the 3D models used for the simulation are.
