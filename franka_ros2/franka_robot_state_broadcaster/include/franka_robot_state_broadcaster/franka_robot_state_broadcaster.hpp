@@ -21,11 +21,11 @@
 
 #include "controller_interface/controller_interface.hpp"
 #include "franka_msgs/msg/franka_robot_state.hpp"
-#include "franka_robot_state_broadcaster_parameters.hpp"
+#include <franka_robot_state_broadcaster/franka_robot_state_broadcaster_parameters.hpp>
 #include "franka_semantic_components/franka_robot_state.hpp"
 #include "rclcpp_lifecycle/lifecycle_publisher.hpp"
 #include "rclcpp_lifecycle/node_interfaces/lifecycle_node_interface.hpp"
-#include "realtime_tools/realtime_publisher.h"
+#include "realtime_tools/realtime_publisher.hpp"
 
 namespace franka_robot_state_broadcaster {
 class FrankaRobotStateBroadcaster : public controller_interface::ControllerInterface {

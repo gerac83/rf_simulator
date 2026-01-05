@@ -1,4 +1,4 @@
-# Robotics Foundations Lab Materials - 2025
+# Robotics Foundations Lab Materials - 2026
 
 Welcome to Robotics Foundations (H)! This README provides setup instructions for running the labs, either on a personal computer or using The ConstructSim platform.
 
@@ -14,7 +14,7 @@ For running Robotics Foundations Labs, you have two options:
 - At least 4 cores, not logical processors (e.g. an Intel Core 6700 has 4 cores with 8 logical processors)
 - 8Gb in RAM
 
-Unfortunately, we will not support macOS as virtualisation is close to impossible. The solution is to either use [Boot Camp assistant](https://support.apple.com/en-gb/guide/bootcamp-assistant/bcmp173b3bf2/6.1/mac/15.0), install Ubuntu locally or in a USB (see below), or choose option 2. We will release each lab materials and handout via the course Moodle page.
+Unfortunately, we will not support macOS as virtualisation is close to impossible. The solution is to either use [Boot Camp assistant](https://support.apple.com/en-gb/guide/bootcamp-assistant/welcome/mac), install Ubuntu locally or in a USB (see below), or choose option 2. We will release each lab materials and handout via the course Moodle page.
 
 **Option 2:** Just head over [https://app.theconstruct.ai/login] and create an account. Then log in and in the dashboard, type in the search bar *RFLabEnvSetup* to access the `rosject` (`rosject` is what the ConstructSim uses to define projects using ROS). According to the RF schedule, we will release the lab handouts each week in the ConstructSim, you will be able to find them using the search bar by typing:
 
@@ -28,7 +28,7 @@ Unfortunately, we will not support macOS as virtualisation is close to impossibl
 
 After you have found the *RFLabEnvSetup*, make sure that you are forking the `rosject` created by `gerac83` user (this should be the second to last from the search results). Then, rename the `rosject` with your studentid and click save. Finally, click "Run" (green button in the top-right corner) and familiarise yourself with the platform. You will see that there's a welcome jupyter notebook openned and the taskbar at the bottom has different utilities which you will use such as an integrated instace of VS Code-like IDE, terminals, etc.
 
-After this, follow the instructions given in the welcome jupyter notebook. These instructions are similar to the [Running the Simulation and Motion Planning](#running-the-simulation-and-motion-planning) section but includes. You are also free to try to setup your environment by following the instructions in the [RF Environment Setup](rf-environment-setup) section.
+After this, follow the instructions given in the welcome jupyter notebook. These instructions are similar to the [Running the Simulation and Motion Planning](#running-the-simulation-and-motion-planning) section. If you are interested, you are also free to try to setup your environment by following the instructions in the [RF Environment Setup](rf-environment-setup) section.
 
 ## Installing Ubuntu 22.04 locally or on a USB
 
@@ -63,7 +63,9 @@ sudo apt upgrade -y
 
 ### VS Code Installation in a local Ubuntu installation
 
-To instal VSCode, go to [https://code.visualstudio.com/download](https://code.visualstudio.com/download) and download the `.deb` file for "Debian, Ubuntu". After you have finished downloading the file, open a terminal and type the following:
+**NOTE:** If you are using WSL, please skip this section and go to [VS Code Installation using WSL](#vs-code-installation-using-wsl) section.
+
+To install VSCode, go to [https://code.visualstudio.com/download](https://code.visualstudio.com/download) and download the `.deb` file for "Debian, Ubuntu". After you have finished downloading the file, open a terminal and type the following:
 
 ```bash
 cd ~/Downloads
@@ -74,33 +76,36 @@ You can test whether the installation went OK by typing in the terminal `code`.
 
 ### VS Code Installation using WSL
 
-For this, you need to download VS Code for windows which you can find at [https://code.visualstudio.com/download](https://code.visualstudio.com/download). When downloaded, double-click on the file and follow the instructions. Use the default settings.
+If you do not have VS Code installed on Windows, you need to download it from [https://code.visualstudio.com/download](https://code.visualstudio.com/download). When downloaded, double-click on the file and follow the instructions. Use the default settings.
 
-Now, in your WSL command prompt (or PowerShell) where you the Ubuntu prompt, type `code .` and you will get the Windows version of VS Code connecting to the WSL automatically!
+Now, in your WSL command prompt (or PowerShell), type `code .` and you will get the Windows version of VS Code connecting to the WSL automatically!
 
 ## ROS2 Installation
 
-You now can install ROS2 (Humble). The commands below are similar to those found in [here](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html). Run the following commands in the terminal, each at a time:
+You now can install ROS2 (Humble). The commands below are similar to those found in [here](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html). Run the following commands in the terminal, each line at a time:
 
-(Add Ubuntu Universe repo and download ROS2 GPG key)
+###### Add Ubuntu Universe repo and setup sources
+
 ```bash
 sudo apt install software-properties-common
+
 sudo add-apt-repository universe
+
 sudo apt update && sudo apt install curl -y
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o /usr/share/keyrings/ros-archive-keyring.gpg
+
+export ROS_APT_SOURCE_VERSION=$(curl -s https://api.github.com/repos/ros-infrastructure/ros-apt-source/releases/latest | grep -F "tag_name" | awk -F\" '{print $4}')
+
+curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-apt-source/releases/download/${ROS_APT_SOURCE_VERSION}/ros2-apt-source_${ROS_APT_SOURCE_VERSION}.$(. /etc/os-release && echo ${UBUNTU_CODENAME:-${VERSION_CODENAME}})_all.deb"
+
+sudo dpkg -i /tmp/ros2-apt-source.deb
 ```
 
-(Add the repository to your sources list)
+###### Install ROS2 packages; we will use the recommended desktop install
 
 ```bash
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
-```
+sudo apt update && sudo apt upgrade -y
 
-(Install ROS2 packages; we will use the recommended desktop install)
-
-```bash
-sudo apt update && sudo apt upgrade
-sudo apt install ros-humble-desktop ros-dev-tools
+sudo apt install ros-humble-desktop -y
 ```
 
 That's it! :)
@@ -113,13 +118,15 @@ After installing ROS, you can now setup your environment for RF. For this, run t
 
 ```bash
 echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
+
 echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc
+
 echo "export ROS_LOCALHOST_ONLY=1" >> ~/.bashrc
 ```
 
-The first adds to `.bashrc` ROS2 installation to the system's PATH such that you can use ROS2 functionalities from the command line. `.bashrc` is sourced (i.e. executed) everytime you open a terminal. The following two tells the terminal interpreter (i.e. bash) to colorised ROS 2 logger and restrict network communications within the localhost (i.e. your PC; otehrwise you will observe unpredictable behaviour while running ROS in the university).
+The first line adds to `.bashrc` the ROS2 installation PATH such that you can use ROS2 functionalities from the command line. `.bashrc` is sourced (i.e. executed) everytime you open a terminal. The following two lines tells the terminal interpreter (i.e. bash) to colorised ROS 2 logger and restrict network communications within the localhost (i.e. your PC; otherwise you will observe unpredictable behaviour while running ROS in the university).
 
-The next step is to get and build the simulator and related ROS packages for RF. So, run (one line at a time):
+The next step is to get and build the simulator and related ROS packages for RF. So, run:
 
 ```bash
 sudo apt update && sudo apt install -y ros-humble-ament-cmake ros-humble-ament-cmake-clang-format ros-humble-angles ros-humble-ros2-controllers ros-humble-ros2-control ros-humble-ros2-control-test-assets ros-humble-controller-manager ros-humble-control-msgs ros-humble-control-toolbox ros-humble-generate-parameter-library ros-humble-joint-state-publisher ros-humble-joint-state-publisher-gui ros-humble-moveit ros-humble-pinocchio ros-humble-realtime-tools ros-humble-xacro ros-humble-hardware-interface ros-humble-ros-gz python3-colcon-common-extensions ros-humble-rmw-cyclonedds-cpp python3-ipykernel python3-jupyter-client ros-humble-libfranka
@@ -139,14 +146,14 @@ Now you can clone `rf_simulator` into this workspace and then source the ROS ins
 
 ```bash
 git clone https://github.com/gerac83/rf_simulator.git src/rf_simulator
-source /opt/ros/humble/setup.bash
+source ~/.bashrc
 ```
 
 The following command will build and compile RF's simulation workspace:
 
 
 ```bash
-colcon build --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
+find . -type f -exec touch {} + &&colcon build --symlink-install --cmake-args "-DCMAKE_BUILD_TYPE=Release"
 ```
 
 This command tells the interprater where the newly built ROS packages are such that you can execute them and adds an environmental variable that points to where the 3D models used for the simulation are.

@@ -17,6 +17,7 @@ set(THIS_PACKAGE_INCLUDE_DEPENDS
     control_msgs
     controller_interface
     controller_manager
+    ros2_control_test_assets
     franka_msgs
     franka_semantic_components
     generate_parameter_library

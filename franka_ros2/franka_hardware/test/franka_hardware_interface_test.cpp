@@ -15,6 +15,7 @@
 #include <gmock/gmock.h>
 #include <exception>
 #include <rclcpp/rclcpp.hpp>
+#include <cstring>  // Add this for std::memcpy
 
 #include <franka_hardware/franka_hardware_interface.hpp>
 #include <franka_hardware/model.hpp>
@@ -180,11 +181,12 @@ TEST_F(
   ASSERT_EQ(return_type, hardware_interface::return_type::OK);
   auto states = franka_hardware_interface.export_state_interfaces();
   ASSERT_EQ(states[state_interface_size - 19].get_name(),
-            "fr3/robot_model");  // Last state interface is the robot model state +
-                                 // initial_pose(16) + inital_elbow(2) + initial position(7)
-  EXPECT_NEAR(states[state_interface_size - 19]
-                  .get_value(),  // initial_pose(16), initial_pose(2) + initial position(7)
-              *reinterpret_cast<double*>(&model_address),
+            "fr3/robot_model");
+  
+  double expected_model_value;
+  std::memcpy(&expected_model_value, &model_address, sizeof(double));
+  EXPECT_NEAR(states[state_interface_size - 19].get_value(),
+              expected_model_value,
               k_EPS);  // testing that the casted mock_model ptr
                        // is correctly pushed to state interface
 }
@@ -214,9 +216,12 @@ TEST_F(
   ASSERT_EQ(return_type, hardware_interface::return_type::OK);
   auto states = franka_hardware_interface.export_state_interfaces();
   ASSERT_EQ(states[state_interface_size - 2].get_name(),
-            "fr3/robot_state");  // Last state interface is the robot model state
+            "fr3/robot_state");
+  
+  double expected_state_value;
+  std::memcpy(&expected_state_value, &robot_state_address, sizeof(double));
   EXPECT_NEAR(states[state_interface_size - 2].get_value(),
-              *reinterpret_cast<double*>(&robot_state_address),
+              expected_state_value,
               k_EPS);  // testing that the casted robot state ptr
                        // is correctly pushed to state interface
 }

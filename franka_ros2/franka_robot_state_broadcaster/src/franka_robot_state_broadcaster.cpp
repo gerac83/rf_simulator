@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "franka_robot_state_broadcaster/franka_robot_state_broadcaster.hpp"
+#include <franka_robot_state_broadcaster/franka_robot_state_broadcaster.hpp>
 
 #include <cstddef>
 #include <limits>
