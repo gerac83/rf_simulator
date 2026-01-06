@@ -213,8 +213,9 @@ cd ~/franka_ros2_ws
 
 Everything is now set up so you should be able to run the following commands, start one in each terminal:
 
-1. `ros2 launch franka_gazebo_bringup gazebo_empty.launch.py`
-2. `ros2 launch franka_gazebo_bringup moveit_sim.launch.py`
+**Terminal 1:** `ros2 launch franka_gazebo_bringup gazebo_empty.launch.py`
+
+**Terminal 2:** `ros2 launch franka_gazebo_bringup moveit_sim.launch.py`
 
 and you should be able to see the simulation (aka Gazebo) and a robot visualisation (RViz). Explore both and see if you can make the robot move! Although, that will be the aim of the first lab.
 
