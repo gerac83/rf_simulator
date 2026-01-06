@@ -2,7 +2,24 @@
 
 Welcome to Robotics Foundations (H)! This README provides setup instructions for running the labs, either on a personal computer or using The ConstructSim platform.
 
-## Environment Setup
+<!-- vscode-markdown-toc -->
+* [1. Environment Setup](#EnvironmentSetup)
+* [2. Installing Ubuntu 22.04 locally or on a USB](#InstallingUbuntu22.04locallyoronaUSB)
+* [3. Windows Subsystem Linux (WSL)](#WindowsSubsystemLinuxWSL)
+* [4. In a Ubuntu 22.04 installation (WSL, Local or USB Installation)](#InaUbuntu22.04installationWSLLocalorUSBInstallation)
+	* [4.1. VS Code Installation in a local Ubuntu installation](#VSCodeInstallationinalocalUbuntuinstallation)
+	* [4.2. VS Code Installation using WSL](#VSCodeInstallationusingWSL)
+* [5. ROS2 Installation](#ROS2Installation)
+* [6. RF Environment Setup](#RFEnvironmentSetup)
+* [7. Running the Simulation and Motion Planning](#RunningtheSimulationandMotionPlanning)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
+##  1. <a name='EnvironmentSetup'></a>Environment Setup
 
 For running Robotics Foundations Labs, you have two options:
 
@@ -16,7 +33,10 @@ For running Robotics Foundations Labs, you have two options:
 
 Unfortunately, we will not support macOS as virtualisation is close to impossible. The solution is to either use [Boot Camp assistant](https://support.apple.com/en-gb/guide/bootcamp-assistant/welcome/mac), install Ubuntu locally or in a USB (see below), or choose option 2. We will release each lab materials and handout via the course Moodle page.
 
-**Option 2:** Just head over [https://app.theconstruct.ai/login] and create an account. Then log in and in the dashboard, type in the search bar *RFLabEnvSetup* to access the `rosject` (`rosject` is what the ConstructSim uses to define projects using ROS). According to the RF schedule, we will release the lab handouts each week in the ConstructSim, you will be able to find them using the search bar by typing:
+**Option 2:** Just head over [https://app.theconstruct.ai/login] and create an account. Then log in and in the dashboard, type in the search bar *RFLabEnvSetup* to access the `rosject` (`rosject` is what the ConstructSim uses to define projects using ROS). ALternatively, you can follow this [direct link](https://app.theconstruct.ai/rosjects/search/?q=RFLabEnvSetup) to the search results.
+
+
+According to the RF schedule, we will release the lab handouts each week in the ConstructSim, you will be able to find them using the search bar by typing (we will also provide direct links via Moodle):
 
 - *RFLab1* for the first lab in week 2.
 - *RFLab2* for the second lab in week 3.
@@ -30,7 +50,7 @@ After you have found the *RFLabEnvSetup*, make sure that you are forking the `ro
 
 After this, follow the instructions given in the welcome jupyter notebook. These instructions are similar to the [Running the Simulation and Motion Planning](#running-the-simulation-and-motion-planning) section. If you are interested, you are also free to try to setup your environment by following the instructions in the [RF Environment Setup](rf-environment-setup) section.
 
-## Installing Ubuntu 22.04 locally or on a USB
+##  2. <a name='InstallingUbuntu22.04locallyoronaUSB'></a>Installing Ubuntu 22.04 locally or on a USB
 
 You can either install ubuntu locally or install it on a USB. For this, follow the instructions given on the following links:
 
@@ -38,7 +58,7 @@ You can either install ubuntu locally or install it on a USB. For this, follow t
 - In a USB: [https://www.youtube.com/watch?v=j2RYqahtkNc](https://www.youtube.com/watch?v=j2RYqahtkNc)
 - For macOS users: [https://linuxsimply.com/linux-basics/os-installation/dual-boot/ubuntu-on-mac/#:~:text=11%20Steps%20for%20Dual%20Boot%20Installation%20of%20Ubuntu,...%208%208.%20Installation%20Type%20...%20More%20items]
 
-## Windows Subsystem Linux (WSL)
+##  3. <a name='WindowsSubsystemLinuxWSL'></a>Windows Subsystem Linux (WSL)
 
 It is possible to run the simulation and code for RF labs in a WSL image on Windows. For this make sure to have installed WSL [https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command](https://learn.microsoft.com/en-us/windows/wsl/install#install-wsl-command) and that you have admin rights in your PC. Then, you can either download Ubuntu 22.04 from the Microsft Store: [https://apps.microsoft.com/detail/9pn20msr04dw?hl=en-US&gl=GB](https://apps.microsoft.com/detail/9pn20msr04dw?hl=en-US&gl=GB) or run the following command in a command prompt:
 
@@ -50,7 +70,7 @@ The installer will ask you for a username and password, feel free to choose what
 
 If you get an error while running WSL, it may mean that you do not have virtualization enable. If this is the case, just ask us during your lab hour so we can help you!
 
-## In a Ubuntu 22.04 installation (WSL, Local or USB Installation)
+##  4. <a name='InaUbuntu22.04installationWSLLocalorUSBInstallation'></a>In a Ubuntu 22.04 installation (WSL, Local or USB Installation)
 
 Open a linux terminal and issue the following commands:
 
@@ -61,7 +81,7 @@ sudo apt update
 sudo apt upgrade -y
 ```
 
-### VS Code Installation in a local Ubuntu installation
+###  4.1. <a name='VSCodeInstallationinalocalUbuntuinstallation'></a>VS Code Installation in a local Ubuntu installation
 
 **NOTE:** If you are using WSL, please skip this section and go to [VS Code Installation using WSL](#vs-code-installation-using-wsl) section.
 
@@ -74,13 +94,13 @@ sudo apt install ./<file>.deb
 
 You can test whether the installation went OK by typing in the terminal `code`.
 
-### VS Code Installation using WSL
+###  4.2. <a name='VSCodeInstallationusingWSL'></a>VS Code Installation using WSL
 
 If you do not have VS Code installed on Windows, you need to download it from [https://code.visualstudio.com/download](https://code.visualstudio.com/download). When downloaded, double-click on the file and follow the instructions. Use the default settings.
 
 Now, in your WSL command prompt (or PowerShell), type `code .` and you will get the Windows version of VS Code connecting to the WSL automatically!
 
-## ROS2 Installation
+##  5. <a name='ROS2Installation'></a>ROS2 Installation
 
 You now can install ROS2 (Humble). The commands below are similar to those found in [here](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html). Run the following commands in the terminal, each line at a time:
 
@@ -110,9 +130,9 @@ sudo apt install ros-humble-desktop -y
 
 That's it! :)
 
-## RF Environment Setup
+##  6. <a name='RFEnvironmentSetup'></a>RF Environment Setup
 
-**Note:** These steps are already executed in the ConstructSim. If you wish, you can create a new ROSject and follow these steps. If you are unsure or you get errors, just ask us!
+**Note:** These steps are already executed in the ConstructSim. Do not run them if you are using the ConstructSim!
 
 After installing ROS, you can now setup your environment for RF. For this, run the following commands, each at a time:
 
@@ -183,7 +203,7 @@ cd ~/franka_ros2_ws/src
 code .
 ```
 
-## Running the Simulation and Motion Planning
+##  7. <a name='RunningtheSimulationandMotionPlanning'></a>Running the Simulation and Motion Planning
 
 Open two terminals (same for VS Code) and issue the following command in both terminals (NOTE: `~` is a shortcut to your home directory path):
 
