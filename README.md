@@ -33,7 +33,7 @@ For running Robotics Foundations Labs, you have two options:
 
 Unfortunately, we will not support macOS as virtualisation is close to impossible. The solution is to either use [Boot Camp assistant](https://support.apple.com/en-gb/guide/bootcamp-assistant/welcome/mac), install Ubuntu locally or in a USB (see below), or choose option 2. We will release each lab materials and handout via the course Moodle page.
 
-**Option 2:** Just head over [https://app.theconstruct.ai/login] and create an account. Then log in and in the dashboard, type in the search bar *RFLabEnvSetup 2026* to access the `rosject` (`rosject` is what the ConstructSim uses to define projects using ROS). ALternatively, you can follow this [direct link]([https://app.theconstruct.ai/rosjects/search/?q=RFLabEnvSetup](https://app.theconstruct.ai/l/7088d853/)).
+**Option 2:** Just head over [https://app.theconstruct.ai/login] and create an account. Then log in and in the dashboard, type in the search bar *RFLabEnvSetup 2026* to access the `rosject` (`rosject` is what the ConstructSim uses to define projects using ROS). ALternatively, you can follow this [https://app.theconstruct.ai/rosjects/search/?q=RFLabEnvSetup](https://app.theconstruct.ai/l/7088d853/).
 
 
 According to the RF schedule, we will release the lab handouts each week in the ConstructSim, you will be able to find them using the search bar by typing (we will also provide direct links via Moodle):
